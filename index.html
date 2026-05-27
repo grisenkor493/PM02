@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Hotel Spa - Catalog</title>
+
+    <style>
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            background-color:#9cd3f7;
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+        }
+
+        /* Шапка */
+
+        .header{
+            background-color:#e6f7ff;
+            padding:10px 40px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            height:80px;
+        }
+
+        .header-logo{
+            font-family:'Brush Script MT',cursive,serif;
+            font-size:38px;
+            color:#111;
+        }
+
+        .header-slogan{
+            font-style:italic;
+            color:#555;
+            font-size:14px;
+            text-align:center;
+            line-height:1.2;
+            max-width:400px;
+        }
+
+        .header-menu{
+            font-size:30px;
+            color:#8cb6d4;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        /* Основной контент */
+
+        .main{
+            display:flex;
+            flex:1;
+        }
+
+        /* Сайдбар */
+
+        .sidebar{
+            background-color:#ffffff;
+            width:220px;
+            padding:30px 20px;
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .filter-label{
+            display:flex;
+            align-items:center;
+            font-size:18px;
+            cursor:pointer;
+            color:#333;
+        }
+
+        .filter-label input{
+            margin-right:15px;
+            width:20px;
+            height:20px;
+            cursor:pointer;
+            accent-color:#000;
+        }
+
+        .buttons{
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+            margin-top:20px;
+            align-items:flex-start;
+        }
+
+        .btn{
+            background-color:#d0ebff;
+            border:none;
+            padding:8px 30px;
+            font-size:16px;
+            border-radius:15px;
+            cursor:pointer;
+            color:#111;
+            transition:0.2s;
+        }
+
+        .btn:hover{
+            background-color:#b3dbff;
+        }
+
+        /* Карточки */
+
+        .content{
+            padding:40px;
+            flex:1;
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:30px;
+            align-content:start;
+        }
+
+        .card{
+            background-color:#e6f7ff;
+            overflow:hidden;
+            transition:0.2s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card img{
+            width:100%;
+            height:180px;
+            object-fit:cover;
+            display:block;
+        }
+
+        .card-info{
+            padding:12px;
+            background:#e6f7ff;
+            border-top:1px solid #ccc;
+        }
+
+        .card-row{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:8px;
+            gap:10px;
+        }
+
+        .card-title{
+            font-weight:bold;
+            text-transform:uppercase;
+            font-size:13px;
+        }
+
+        .card-price{
+            font-weight:bold;
+            white-space:nowrap;
+        }
+
+        .card-cat{
+            color:#555;
+            font-size:13px;
+        }
+
+        .book-btn{
+            display:block;
+            width:100%;
+            text-align:center;
+            text-decoration:none;
+            background:#b3dbff;
+            color:#111;
+            padding:10px;
+            border-radius:12px;
+            margin-top:10px;
+            font-weight:bold;
+            transition:0.2s;
+        }
+        .book-btn:hover{
+            background:#8ec9ff;
+        }
+
+        /* Подвал */
+
+        .footer{
+            background-color:#e6f7ff;
+            padding:20px;
+            display:flex;
+            justify-content:space-around;
+            gap:15px;
+            flex-wrap:wrap;
+        }
+
+        .footer-box{
+            background-color:#ffffff;
+            padding:15px;
+            border-radius:15px;
+            width:22%;
+            min-width:180px;
+            font-size:12px;
+            color:#333;
+        }
+
+        .footer-box strong{
+            display:block;
+            margin-bottom:10px;
+            font-weight:normal;
+            color:#777;
+        }
+
+        @media(max-width:1000px){
+            .content{
+                grid-template-columns:repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:700px){
+            .main{
+                flex-direction:column;
+            }
+
+            .sidebar{
+                width:100%;
+            }
+
+            .content{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-logo">Royal Hotel Spa</div>
+
+        <div class="header-slogan">
+            Relax, take a break, and experience a level of comfort you've never
+            felt before. Забронируй номер!
+        </div>
+
+        <div class="header-menu">≡</div>
+    </header>
+
+    <div class="main">
+
+        <!-- Фильтры -->
+
+        <aside class="sidebar">
+
+            <label class="filter-label">
+                <input type="checkbox" value="Стандартный" class="filter-cb">
+                Стандартный
+            </label>
+
+            <label class="filter-label">
+                <input type="checkbox" value="Студия" class="filter-cb">
+                Студия
+            </label>
+
+            <label class="filter-label">
+                <input type="checkbox" value="Люкс" class="filter-cb">
+                Люкс
+            </label>
+
+            <div class="buttons">
+                <button class="btn" id="btnDone">Применить</button>
+                <button class="btn" id="btnClear">Сбросить</button>
+            </div>
+
+        </aside>
+
+        <!-- Каталог -->
+
+        <section class="content" id="catalogGrid">
+
+            <div class="card" data-category="Люкс">
+                <img src="номер4.webp" alt="Номер">
+
+                <div class="card-info">
+
+                    <div class="card-row">
+                        <span class="card-title">
+                            Twin Club Deluxe Hollywood Twin
+                        </span>
+
+                        <span class="card-price">
+                            10948$
+                        </span>
+                    </div>
+
+                    <div class="card-row">
+                        <span class="card-cat">
+                            Категория: Люкс
+                        </span>
+
+                        <span>
+                            7 ночей
+                        </span>
+                    </div>
+
+                    <a href="booking.html" class="book-btn">
+                        Бронь
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="card" data-category="Стандартный">
+                <img src="номер1.webp" alt="Номер">
+
+                <div class="card-info">
+
+                    <div class="card-row">
+                        <span class="card-title">
+                            Double King Size Bed
+                        </span>
+
+                        <span class="card-price">
+                            1944$
+                        </span>
+                    </div>
+
+                    <div class="card-row">
+                        <span class="card-cat">
+                            Категория: Стандартный
+                        </span>
+
+                        <span>
+                            7 ночей
+                        </span>
+                    </div>
+                    <a href="booking.html" class="book-btn">
+                        Бронь
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="card" data-category="Люкс">
+                <img src="номер5.webp" alt="Номер">
+
+                <div class="card-info">
+
+                    <div class="card-row">
+                        <span class="card-title">
+                            Suite Executive King Bed
+                        </span>
+
+                        <span class="card-price">
+                            15478$
+                        </span>
+                    </div>
+
+                    <div class="card-row">
+                        <span class="card-cat">
+                            Категория: Люкс
+                        </span>
+
+                        <span>
+                            7 ночей
+                        </span>
+                    </div>
+
+                    <a href="booking.html" class="book-btn">
+                        Бронь
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="card" data-category="Студия">
+                <img src="номер3.webp" alt="Номер">
+
+                <div class="card-info">
+
+                    <div class="card-row">
+                        <span class="card-title">
+                            Executive Suite King Room
+                        </span>
+
+                        <span class="card-price">
+                            7865$
+                        </span>
+                    </div>
+
+                    <div class="card-row">
+                        <span class="card-cat">
+                            Категория: Студия
+                        </span>
+
+                        <span>
+                            7 ночей
+                        </span>
+                    </div>
+
+                    <a href="booking.html" class="book-btn">
+                        Бронь
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="card" data-category="Стандартный">
+                <img src="номер2.webp" alt="Номер">
+
+                <div class="card-info">
+
+                    <div class="card-row">
+                        <span class="card-title">
+                            Suite Two Beds
+                        </span>
+
+                        <span class="card-price">
+                            8948$
+                        </span>
+                    </div>
+
+                    <div class="card-row">
+                        <span class="card-cat">
+                            Категория: Стандартный
+                        </span>
+
+                        <span>
+                            7 ночей
+                        </span>
+                    </div>
+
+                    <a href="booking.html" class="book-btn">
+                        Бронь
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="card" data-category="Люкс">
+                <img src="номер6.webp" alt="Номер">
+
+                <div class="card-info">
+
+                    <div class="card-row">
+                        <span class="card-title">
+                            Garden Suite Twin
+                        </span>
+
+                        <span class="card-price">
+                            11857$
+                        </span>
+                    </div>
+
+                    <div class="card-row">
+                        <span class="card-cat">
+                            Категория: Люкс
+                        </span>
+
+                        <span>
+                            7 ночей
+                        </span>
+                    </div>
+
+                    <a href="booking.html" class="book-btn">
+                        Бронь
+                    </a>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- Подвал -->
+
+    <footer class="footer">
+
+        <div class="footer-box">
+            <strong>Адрес:</strong>
+            Токио, Matsubara St., 46
+        </div>
+
+        <div class="footer-box">
+            <strong>Режим работы:</strong>
+            Круглосуточно
+        </div>
+
+        <div class="footer-box">
+            <strong>Телефон:</strong>
+            +81301245789
+        </div>
+
+        <div class="footer-box">
+            <strong>Почта:</strong>
+            booking@royalhotel.jp
+        </div>
+
+    </footer>
+
+    <script>
+
+        // Фильтрация
+
+        const btnDone = document.getElementById('btnDone');
+        const btnClear = document.getElementById('btnClear');
+
+        const checkboxes = document.querySelectorAll('.filter-cb');
+        const cards = document.querySelectorAll('.card');
+
+        btnDone.addEventListener('click', () => {
+
+            const selectedCategories = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            cards.forEach(card => {
+
+                const cardCategory = card.getAttribute('data-category');
+
+                if(
+                    selectedCategories.length === 0 ||
+                    selectedCategories.includes(cardCategory)
+                ){
+                    card.style.display = 'block';
+                }
+                else{
+                    card.style.display = 'none';
+                }
+
+            });
+
+        });
+
+        btnClear.addEventListener('click', () => {
+
+            checkboxes.forEach(cb => cb.checked = false);
+
+            cards.forEach(card => {
+                card.style.display = 'block';
+            });
+
+        });
+
+        // РАНДОМ КАРТОЧЕК ПРИ ОБНОВЛЕНИИ
+
+        const catalogGrid = document.getElementById('catalogGrid');
+
+        const shuffledCards = Array.from(cards)
+            .sort(() => Math.random() - 0.5);
+
+        shuffledCards.forEach(card => {
+            catalogGrid.appendChild(card);
+        });
+
+    </script>
+
+</body>
+</html>
