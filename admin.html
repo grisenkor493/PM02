@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Royal Hotel Spa - Admin Panel</title>
+    <style>
+        /* Используем общие стили вашего проекта */
+        body { background-color: #f0f7ff; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        .admin-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h2 { color: #333; margin-bottom: 20px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #e6f7ff; }
+        
+        .btn-action { padding: 5px 10px; border-radius: 8px; border: none; cursor: pointer; margin-right: 5px; }
+        .btn-edit { background: #b3dbff; }
+        .btn-delete { background: #ffcccc; }
+        
+        .form-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { padding: 8px; border: 1px solid #ccc; border-radius: 8px; flex: 1; }
+    </style>
+</head>
+<body>
+    <header style="margin-bottom: 20px;">
+        <h1>Панель администратора</h1>
+        <a href="index.html">Вернуться в каталог</a>
+    </header>
+    <section class="admin-section">
+        <h2>Заявки на бронирование</h2>
+        <table>
+            <tr>
+                <th>ID</th><th>Клиент</th><th>Номер</th><th>Статус</th><th>Действия</th>
+            </tr>
+            <tr>
+                
+                <td><button class="btn-action btn-edit">Принять</button><button class="btn-action btn-delete">Удалить</button></td>
+            </tr>
+        </table>
+    </section>
+    <section class="admin-section">
+        <h2>Редактирование каталога</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Название номера">
+            <input type="text" placeholder="Категория">
+            <input type="number" placeholder="Цена ($)">
+            <button class="btn-action" style="background: #b3dbff;">Добавить номер</button>
+        </div>
+        <table>
+            <tr>
+                <th>Название</th><th>Категория</th><th>Цена</th><th>Действия</th>
+            </tr>
+            <tr>
+                <td>Twin Club Deluxe</td><td>Люкс</td><td>10948$</td>
+                <td><button class="btn-action btn-edit">Ред.</button><button class="btn-action btn-delete">Удал.</button></td>
+            </tr>
+        </table>
+    </section>
+</body>
+</html>
